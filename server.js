@@ -29,7 +29,7 @@ app.get('/favicon.ico', function (req, res) {
 function validateUser(req, res, next) {
   jwt.verify(req.headers['x-access-token'], req.app.get('secretKey'), function (err, decoded) {
     if (err) {
-      res.json({
+      res.status(401).json({
         status: "error",
         message: err.message,
         data: null
